@@ -1,0 +1,63 @@
+#Program name
+#NAME = push_swap_out
+
+#libft directory path
+LIBFT_PATH = ./libft/
+
+LIBFT = libft
+
+LIBFT.A = libft.a
+
+# Source files for push_swap
+#SRC = main.c
+
+# Transform .c to .o
+#OBJ 	= 	${SRC:.c=.o}
+#OBJ		=	${SRC}
+
+# Compilation instructions
+CFLAGS = -Wall -Wextra -Werror
+CC = cc
+AR = ar -rcs
+RM = rm -f
+
+# Compile the binary exe
+#all:	${NAME}
+
+all:	push_swap
+
+	$(LIBFT.A) :
+	@make -C $(LIBFT)
+	@echo "libft functions compiled!"
+
+push_swap:	main.c
+#Compile each object and copy LIBFT TO CURRENT PROJECT
+#$(NAME) : 	${OBJ} ${LIBFT.A}
+#	@cp ${LIBFT_PATH} ${LIBFT.A} .
+#	@mv ${LIBFT.A} ${NAME}
+#   @gcc $(CFLAGS) -c $(SRC)
+	${CC} main.c ${LIBFT_PATH}${LIBFT.A} :
+#	${AR} ${NAME} ${OBJ}
+	@echo "libft included in push_swap and push_swap functions compiled!"
+
+#$(LIBFT.A) :
+#	@make -C $(LIBFT)
+#	@echo "libft functions compiled!"
+
+#Clean norm to delete all OBJECTS (o.files)
+clean:	
+#	${RM} ${OBJ}
+	@make clean -C $(LIBFT)
+	@echo "*.o cleaned!"
+
+#fclean to delete all (.a files and NAME)
+fclean:	clean
+	${RM} ${NAME}
+	@make fclean -C $(LIBFT)
+	@echo "*.o and *.a cleaned!"
+
+#re to remake, it is similar to execute make for the first time
+re:	fclean all
+	@echo "all cleaned and rebuilt!"
+
+.PHONY: all clean fclean bonus re

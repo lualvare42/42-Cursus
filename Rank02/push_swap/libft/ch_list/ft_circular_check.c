@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_circular_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lualvare <lualvare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 14:39:03 by lualvare          #+#    #+#             */
-/*   Updated: 2023/03/14 10:19:34 by lualvare         ###   ########.fr       */
+/*   Created: 2023/03/17 15:45:43 by lualvare          #+#    #+#             */
+/*   Updated: 2023/03/21 07:31:10 by lualvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ch_list.h"
 
-int	ft_isspace(int c)
+void	ft_circular_check(t_clist *list)
 {
-	return ((c >= 9 && c <= 13) || (c == ' '));
+	t_clist	*head;
+	t_clist	*last;
+
+	head = list;
+	last = ft_c_listlast(list);
+	if ((last->next == head) && (head->prev == last))
+		printf("\nCircular Linked List Working\n");
+	else
+		printf("\nCircular Linked List NOT Working\n");
 }

@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lualvare <lualvare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 14:39:03 by lualvare          #+#    #+#             */
-/*   Updated: 2023/03/14 10:19:34 by lualvare         ###   ########.fr       */
+/*   Created: 2023/01/11 07:45:17 by lualvare          #+#    #+#             */
+/*   Updated: 2023/01/13 16:11:33 by lualvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isspace(int c)
+void	ft_print_nbr_u(unsigned int n, int *i)
 {
-	return ((c >= 9 && c <= 13) || (c == ' '));
+	if (n > 9)
+	{
+		ft_print_nbr_u((n / 10), i);
+		ft_print_nbr_u((n % 10), i);
+	}
+	else
+	{
+		n = n + 48;
+		write(1, &n, 1);
+		*i = *i + 1;
+	}
+}
+
+void	ft_print_unsigned(va_list ap, int *i)
+{
+	unsigned int	n;
+
+	n = va_arg(ap, unsigned int);
+	ft_print_nbr_u(n, i);
 }

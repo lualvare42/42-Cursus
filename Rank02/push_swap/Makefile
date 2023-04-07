@@ -8,24 +8,27 @@ LIBFT = libft
 
 LIBFT.A = libft.a
 
-# Source files for push_swap
-SRC = main.c
+#ft_printf directory path
 
-# Transform .c to .o
-#OBJ 	= 	${SRC:.c=.o}
-#OBJ		=	${SRC}
+FTPRINTF.A = ./libft/ft_printf/libftprintf.a
+
+#includes path
+
+I = ./includes/
+
+# Source files for push_swap
+SRC = push_swap.c $(wildcard ${I}*.c)
 
 # Compilation instructions
 CFLAGS = -Wall -Wextra -Werror
-CC = cc -o push_swap.out
+CC = cc -g -o push_swap.out
 AR = ar -rcs
 RM = rm -f
 
-# Compile the binary exe
-#all:	${NAME}
-#$(LIBFT.A) :
-#	@make -C $(LIBFT)
-#	@echo "libft functions compiled!"
+#Address Sanitizer
+SANITIZE = -fsanitize=address -static-libsan
+
+# -C option for make changes directory and search in /libft
 
 all:	${NAME}
 
@@ -34,7 +37,7 @@ $(LIBFT.A) :
 	@echo "libft functions compiled!"
 
 $(NAME) :	${SRC} ${LIBFT.A}
-	${CC} ${SRC} ${LIBFT_PATH}${LIBFT.A}
+	${CC} ${SRC} ${LIBFT_PATH}${LIBFT.A} ${FTPRINTF.A}
 
 #Clean norm to delete all OBJECTS (o.files)
 clean:	

@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_dup_inarray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lualvare <lualvare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 14:39:03 by lualvare          #+#    #+#             */
-/*   Updated: 2023/03/14 10:19:34 by lualvare         ###   ########.fr       */
+/*   Created: 2023/03/15 09:24:14 by lualvare          #+#    #+#             */
+/*   Updated: 2023/04/05 14:58:23 by lualvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+/**
+ * @brief checks for duplicates in an int array
+ * 
+ * @param input 
+ * @return int 
+ */
+
+int	ft_dup_inarray(int *input, int size)
 {
-	return ((c >= 9 && c <= 13) || (c == ' '));
+	int	n;
+	int	i;
+
+	n = 0;
+	while (n < size - 1)
+	{
+		i = n + 1;
+		while (i < size)
+		{
+			if (input[i] == input[n])
+				return (1);
+			i++;
+		}
+		n++;
+	}
+	return (0);
 }

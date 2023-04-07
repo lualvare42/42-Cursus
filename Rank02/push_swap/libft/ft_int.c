@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lualvare <lualvare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 14:39:03 by lualvare          #+#    #+#             */
-/*   Updated: 2023/03/14 10:19:34 by lualvare         ###   ########.fr       */
+/*   Created: 2023/03/14 10:45:03 by lualvare          #+#    #+#             */
+/*   Updated: 2023/03/14 10:46:21 by lualvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+/**
+ * @brief This function is a boolean for determining the existence of
+ negative or positive ints within a string
+ */
+
+int	ft_int(char c)
 {
-	return ((c >= 9 && c <= 13) || (c == ' '));
+	return ((c >= '0' && c <= '9') || (c == '-' || c == '+'));
 }

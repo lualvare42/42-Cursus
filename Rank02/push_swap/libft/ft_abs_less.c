@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_less.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lualvare <lualvare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 14:39:03 by lualvare          #+#    #+#             */
-/*   Updated: 2023/03/14 10:19:34 by lualvare         ###   ########.fr       */
+/*   Created: 2023/03/27 19:59:23 by lualvare          #+#    #+#             */
+/*   Updated: 2023/03/29 13:55:17 by lualvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+int	ft_abs_less(int a, int b)
 {
-	return ((c >= 9 && c <= 13) || (c == ' '));
+	if (ft_abs(a) < ft_abs(b))
+		return (a);
+	return (b);
 }
